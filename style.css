@@ -7,6 +7,11 @@ body {
     background-size: contain;
   }
 
+@font-face {
+    font-family: 'Minecraftia';
+    src: url('https://fontlibrary.org//face/minecraftia');
+}
+
 h1 {
     color: #ED3F7C;
     font-size: 48px;
