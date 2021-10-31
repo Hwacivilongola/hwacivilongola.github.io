@@ -5,7 +5,15 @@ body {
     background-position: center;
     background-repeat: repeat;
     background-size: contain;
-  }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+    font-family: "Minecraftia";
+    font-size: 18px;
+    text-align:left;
+}
 
 @font-face {
     font-family: 'Minecraftia';
@@ -14,7 +22,7 @@ body {
 
 h1 {
     color: #ED3F7C;
-    font-size: 48px;
+    font-size: 48pt;
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
@@ -24,6 +32,7 @@ h1 {
 p {
     font-family: "Minecraftia";
     font-size: 18px;
+    text-align:left;
 }
 
 #amazingness {
@@ -34,6 +43,7 @@ p {
 ul {
     text-align: center;
 }
+
 li {
     font-family: monospace;
     font-size: 18px;
@@ -44,23 +54,11 @@ a {
     font-size: 18px;
 }
 
-input {
-    font-family: monospace;
-    font-size: 18px;
-}
-
-body {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
 .hide {
     display: none;
-  }
-  
-  .myDIV:hover + .hide {
+}
+
+.myDIV:hover + .hide {
     display: block;
     color: red;
-  }
+}
