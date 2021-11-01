@@ -12,7 +12,7 @@ body {
 
     font-family: "Minecraftia";
     font-size: 18px;
-    text-align:left;
+    text-align: left;
 }
 
 @font-face {
@@ -22,7 +22,7 @@ body {
 
 h1 {
     color: #ED3F7C;
-    font-size: 48pt;
+    font-size: 64px;
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
@@ -32,33 +32,10 @@ h1 {
 p {
     font-family: "Minecraftia";
     font-size: 18px;
-    text-align:left;
+    text-align: left;
 }
 
 #amazingness {
     font-family: "Comic Sans MS";
     font-size: 1px;
-}
-
-ul {
-    text-align: center;
-}
-
-li {
-    font-family: monospace;
-    font-size: 18px;
-}
-
-a {
-    font-family: monospace;
-    font-size: 18px;
-}
-
-.hide {
-    display: none;
-}
-
-.myDIV:hover + .hide {
-    display: block;
-    color: red;
 }
