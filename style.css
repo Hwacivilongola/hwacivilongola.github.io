@@ -20,12 +20,25 @@ body {
     src: url(https://fontlibrary.org//face/minecraftia);
 }
 
+.darkmode {
+    filter: brightness(0.5);
+}
+
 h1 {
     color: #ED3F7C;
     font-size: 64px;
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+h2 {
+    color: white;
+    font-size: 32px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: left;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
