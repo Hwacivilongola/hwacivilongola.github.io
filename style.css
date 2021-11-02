@@ -2,13 +2,13 @@ body {
     background-image: url("https://pbs.twimg.com/profile_images/1246486186807394314/m2kwQ99m.jpg");
     height: 100%;
 
-    background-position: center;
+    background-position: top;
     background-repeat: repeat;
-    background-size: contain;
+    background-size: 20vh;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 69%;
 
     font-family: "Minecraftia";
     font-size: 18px;
@@ -17,7 +17,7 @@ body {
 
 @font-face {
     font-family: 'Minecraftia';
-    src: url('https://fontlibrary.org//face/minecraftia');
+    src: url(https://fontlibrary.org//face/minecraftia);
 }
 
 h1 {

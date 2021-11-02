@@ -1,4 +1,5 @@
 var counter = localStorage.getItem("counter");
+
 function counterUp () {
     counter++;
     localStorage.setItem("counter", counter);
@@ -19,4 +20,8 @@ function counterZero () {
         document.getElementById("counter").innerHTML = counter;
         }
     }
+}
+
+function counterLoad () {
+    document.getElementById("counter").innerHTML = counter;
 }
