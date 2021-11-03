@@ -42,6 +42,14 @@ h2 {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+h3 {
+    color: black;
+    font-size: 21px;
+    font-family: 'Minecraftia';
+    font-weight: bold;
+    text-align: left;
+}
+
 p {
     font-family: "Minecraftia";
     font-size: 18px;
