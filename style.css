@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://pbs.twimg.com/profile_images/1246486186807394314/m2kwQ99m.jpg");
+    background-image: url("AlvinBalvin321.png");
     height: 100%;
 
     background-position: top;
@@ -17,7 +17,7 @@ body {
 
 @font-face {
     font-family: 'Minecraftia';
-    src: url('https://fontlibrary.org//assets/fonts/minecraftia/71962a7e3d4a70435c030466a12f1d63/bf3f245b7cd53caea0cb07d265a64adc/MinecraftiaRegular.ttf');
+    src: url("Minecraftia.ttf");
 }
 
 .darkmode {
