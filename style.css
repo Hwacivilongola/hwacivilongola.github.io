@@ -60,3 +60,13 @@ p {
     font-family: "Comic Sans MS";
     font-size: 1px;
 }
+
+li{
+    list-style-type: none;
+}
+
+li:before {
+    content: '\1F35E ';
+    margin-left: -20px;
+    margin-right: 10px;
+}
