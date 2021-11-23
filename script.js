@@ -1,11 +1,21 @@
 var counter = localStorage.getItem("counter");
 var score = 0;
 
+function loadEverything() {
+    console.log("loaded begun")
+    counterLoad();
+    if (localStorage.getItem("darkMode")=="true") {
+        document.body.classList.toggle("darkmode");
+        console.log("toggled dark mode")
+    }
+    console.log("loaded everything")
+}
+
 function counterLoad() {
     counter = localStorage.getItem("counter");
     score = 0;
     localStorage.setItem("counter", counter);
-    document.getElementById("counter").innerHTML = counter;
+    //document.getElementById("counter").innerHTML = counter;
     
     if (counter==69) {
         document.getElementById("counter").innerHTML = "nice";
@@ -38,5 +48,14 @@ function counterZero() {
         score = 0;
         counterLoad();
         }
+    }
+}
+
+function darkMode() {
+    document.body.classList.toggle("darkmode");
+    if (localStorage.getItem("darkMode")=="true") {
+        localStorage.setItem("darkMode",false)
+    } else {
+        localStorage.setItem("darkMode",true)
     }
 }
