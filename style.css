@@ -57,7 +57,7 @@ h3 {
     font-size: 1px;
 }
 
-li{
+li {
     list-style-type: none;
 }
 
@@ -66,3 +66,16 @@ li:before {
     margin-left: -20px;
     margin-right: 10px;
 }
+
+.button {
+    background-color: white;
+    border: none;
+    display: inline-block;
+
+    color: black;
+    padding: 4px 8px;
+    text-align: center;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+  }
