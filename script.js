@@ -3,12 +3,12 @@ var score = localStorage.getItem("score");
 
 function loadEverything() {
     console.log("loaded begun")
-    counterLoad();
     if (localStorage.getItem("darkMode")=="true") {
         document.body.classList.toggle("darkmode");
         console.log("toggled dark mode")
     }
     document.getElementById("score").innerHTML = "";
+    counterLoad();
     console.log("loaded everything")
 }
 
