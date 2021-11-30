@@ -55,6 +55,9 @@ h3 {
 #amazingness {
     font-family: "Comic Sans MS";
     font-size: 1px;
+    cursor: not-allowed;
+    color: inherit;
+    text-decoration: none;
 }
 
 li {
