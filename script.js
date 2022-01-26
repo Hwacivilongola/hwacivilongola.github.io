@@ -33,6 +33,12 @@ function counterLoad() {
     } else if (counter<0) {
         document.getElementById("counter").innerHTML = "how- i- im not even gonna question it";
         document.getElementById("score").innerHTML = "score for getting a negative number: "+score+" clicks";
+    } else if (counter==6.9) {
+        document.getElementById("counter").innerHTML = "nice but smol";
+        document.getElementById("score").innerHTML = "score for getting 0.69: "+score+" clicks";
+    } else if (counter==69.420) {
+        document.getElementById("counter").innerHTML = "very nice but smol";
+        document.getElementById("score").innerHTML = "score for getting 0.69420: "+score+" clicks";
     }
 }
 
@@ -44,6 +50,18 @@ function counterUp() {
 
 function counterDouble() {
     counter *= 2;
+    score++;
+    counterLoad();
+}
+
+function counterSqrt() {
+    counter = Math.sqrt(counter);
+    score++;
+    counterLoad();
+}
+
+function counterRound() {
+    counter = Math.round(counter*1000)/1000;
     score++;
     counterLoad();
 }
