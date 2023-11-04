@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Space Invaders</title>
+  <style>
+    canvas {
+      border: 5px solid red
+    }
+  </style>
+</head>
+
+<body>
+  <!-- start/stop button -->
+  <button class='play'></button>
+
+
+  <body bgcolor="#00FFF7F">
+    <!-- BOX BORDER COLOR RED  -->
+
+    <h1> Welcome To Asteroid Dodger! By Aaron Labelson and Alexander Pietraru</h1>
+    <h2> In this game you will try to dodge all the asteroids that are coming your way! Each wave is 30 seconds.</h2>
+    <h2> Goodluck! </h2>
+
+    <h3 align="right" id="timer" style="font-size: 50px"> </h3>
+
+    <br>
+    </br>
+    <h4 id="waveThing" align="right" style="font-size: 50px">Wave: 1</h4>
+    <p style="font-size: 200px" align="center" id="dead"> </p>
+
+    <canvas id="gameCanvas" width="900" height="775"></canvas>
+
+
+    <script>
+      var alive = true
+
+
+      //TIMER
+      var i = 1
+      var amtAsteroid = 300
+      var timeLeft = 30
+      var wave = document.getElementById("waveThing")
+      var waveThing = document.getElementById("waveThingy")
+      //gets the id of the timer in html so we can change the html from this javascript using this varaible
+      var timer = document.getElementById("timer")
+      //sets it to count in seconds and allows us to reset it when next wave starts
+      var countingDown = setInterval(countdown, 1000)
+      function countdown() {
+        //checks when timer hits 0 and checks if we are alive (i hope we r) 
+        if (timeLeft == -1) {
+          //changes the number wave variable
+          i++
+          var amtAsteroid = 100
+          //resets the timer
+          timeLeft = 30
+          //tells user what wave they are on 
+          wave.innerHTML = "Wave: " + i
+
+        }
+        else {
+          //sets the "h1" to the real time timeLeft, which starts as 30 
+          timer.innerHTML = timeLeft
+          //subtracts a second off of timeLeft so the line above changes the html code to say the new time left
+          timeLeft--;
+        }
+      }
+
+
+
+      // Set up the canvas - ALEX
+      var canvas = document.getElementById("gameCanvas");
+      var ctx = canvas.getContext("2d");
+
+
+      // Set the canvas dimensions to match what we want - ALEX
+      canvas.width = 900
+      canvas.height = 775
+
+
+      var asteroids = [];
+      // Create a new asteroid every 300ms for wave 1
+      setInterval(() => {
+        var asteroid = {x: Math.random() * canvas.width, y: 0, width: 50, height: 50}
+        asteroids.push(asteroid)
+      }, amtAsteroid)
+
+      // Set up the spaceship object
+      var spaceship = {x: canvas.width / 2, y: canvas.height - 50, width: 50, height: 50, speed: 30}
+
+
+      // Set up the keyboard controls
+      function keyDownHandler(usefull) {
+        if (i > 4) {
+          spaceship.width = 25
+          spaceship.height = 25
+        }
+        if (usefull.key === "ArrowRight" || usefull.key === "d") {
+          if (spaceship.x < canvas.width - spaceship.width) {
+            spaceship.x += spaceship.speed
+          }
+
+        }
+        else if (usefull.key === "ArrowLeft" || usefull.key === "a") {
+          if (spaceship.x > 7) {
+            spaceship.x -= spaceship.speed
+          }
+        }
+        else if (usefull.key === "ArrowUp" || usefull.key === "w") {
+          if (spaceship.y > 675) {
+            spaceship.y -= spaceship.speed / 2
+          }
+        }
+        else if (usefull.key === "ArrowDown" || usefull.key === "s") {
+          if (spaceship.y < 725) {
+            spaceship.y += spaceship.speed / 2
+          }
+        }
+        requestAnimationFrame(keyDownHandler)
+      }
+
+      document.addEventListener("keydown", keyDownHandler)
+
+      function checkCollision() {
+        // iterate through the asteroids array
+        for (let z = 0; z < asteroids.length; z++) {
+          const asteroid = asteroids[z]
+          if (i == 2 || i == 4 && timeLeft % 2 == 1 || i == 6 && timeLeft >= 10 && timeLeft < 20) {
+            var hope = 75
+          }
+          else if (i == 3 || i == 4 && timeLeft % 2 == 0) {
+            hope = 5
+          }
+          else if (i == 5) {
+            hope = 90
+          }
+          else if (i == 6 && timeLeft >= 20) {
+            hope = 100
+          }
+          else {
+            hope = 50
+          }
+          for (var l = 0; l < hope; l++) {
+            //the begin path and close path are needed otherwise the isPointInPath dousnt work because there would be no path if we just did fillRect
+            ctx.beginPath();
+            // check if the asteroid intersects with the spaceship
+            ctx.rect(spaceship.x, spaceship.y, spaceship.width, spaceship.height);
+            if (ctx.isPointInPath(asteroid.x + l, asteroid.y + l)) {
+              // if intersection is detected, set alive to false and update the "dead" element in the HTML
+              alive = false;
+              document.getElementById("dead").innerHTML = "<br>YOU LOSE<br><br>"
+            }
+            ctx.closePath()
+          }
+
+        }
+      }
+
+      function draw() {
+        //clears the past data so the astroids dont make a long rectangle as they go down
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //makes the for loop go for each new astroid
+        for (var asteroid of asteroids) {
+          ctx.fillStyle = ("black")
+          //each if statement is a new wave
+          if (i == 1) {
+            //actually draws the asteroid
+            ctx.fillRect(asteroid.x, asteroid.y, asteroid.width, asteroid.height)
+            //speed at which astroid falls
+            asteroid.y += 5
+          }
+          else if (i == 2) {
+            //actually draws the asteroid
+            ctx.fillRect(asteroid.x, asteroid.y, asteroid.width + 25, asteroid.height + 25)
+            //speed at which astroid falls
+            asteroid.y += 5
+          }
+          else if (i == 3) {
+            //actually draws the asteroid
+            ctx.fillRect(asteroid.x, asteroid.y, asteroid.width - 30, asteroid.height - 30)
+            //speed at which astroid falls
+            asteroid.y += 20
+          }
+          else if (i == 4) {
+
+            if (timeLeft % 2 == 0) {
+              ctx.fillRect(asteroid.x, asteroid.y, asteroid.width - 30, asteroid.height - 30)
+              //speed at which astroid falls
+              asteroid.y += 20
+            }
+            else if (timeLeft % 2 == 1) {
+              ctx.fillRect(asteroid.x, asteroid.y, asteroid.width + 25, asteroid.height + 25)
+              //speed at which astroid falls
+              asteroid.y += 5
+            }
+
+          }
+          else if (i == 5) {
+            ctx.fillRect(asteroid.x, asteroid.y, asteroid.width + 40, asteroid.height + 40)
+            asteroid.y += 15
+          }
+          else if (i == 6) {
+            if (timeLeft >= 20) {
+              ctx.fillRect(asteroid.x, asteroid.y, asteroid.width + 50, asteroid.height + 50)
+              asteroid.y += 15
+            }
+            else if (timeLeft >= 10) {
+              ctx.fillRect(asteroid.x, asteroid.y, asteroid.width + 60, asteroid.height + 60)
+              asteroid.y += 15
+            }
+            else if (timeLeft >= 5) {
+              ctx.fillRect(asteroid.x, asteroid.y, asteroid.width, asteroid.height)
+              asteroid.y += 30
+            }
+            else if (timeLeft < 5) {
+              ctx.fillRect(asteroid.x, asteroid.y, asteroid.width + 200, asteroid.height + 200)
+              asteroid.y += 1.5
+            }
+
+          }
+          else if (i == 7) {
+            document.getElementById("dead").innerHTML = "YOU WIN"
+          }
+
+        }
+        // Draw the updated spaceship
+        ctx.fillStyle = "blue";
+        ctx.fillRect(spaceship.x, spaceship.y, spaceship.width, spaceship.height)
+
+        checkCollision()
+
+        if (alive == false) {
+          return
+        }
+        requestAnimationFrame(draw);
+
+
+      }
+
+      draw();
+
+    </script>
+  </body>
+
+</html>
+
+
+</body>
+
+</html>
